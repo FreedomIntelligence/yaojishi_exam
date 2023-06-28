@@ -37,6 +37,7 @@ def init():
     _ = open('chatgpt_failed.json', "w")
     _.close()
 
+# 在这里修改prompt，其中{question}表示问题、{option}表示选项
 System_prompt = "下面是一道选择题，请先详细分析问题，最后给出选项。\n{question}\n{option}"
 
 if __name__ == '__main__':
@@ -44,12 +45,13 @@ if __name__ == '__main__':
     #读取数据
     data_path = 'dataset/2021真题.json'
     data=[]
-    with open(data_path) as f:
+    with open(data_path, encoding='utf-8') as f:
         data = json.load(f)
     for id,da in enumerate(data):
         da['id'] = id
     print(f"total {len(data)} questions")
 
+    # 进程数
     num_process = 50
     process_list = []
 
