@@ -7,10 +7,11 @@ def get_response(data):
         try_time += 1
         try:
             flag,message =  chatgptmodel.call(data['ChatGPT_query'])
-            if not flag:
-                print(f'error: {message}')
+            # if not flag:
+            #     print(f'error: {message}')
         except Exception as e:
-            print('报错：',e)
+            # print('报错：',e)
+            pass
     if not flag:
         raise ValueError('ChatGPT请求失败')
     return message
